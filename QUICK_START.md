@@ -28,6 +28,7 @@ SUPABASE_URL=https://your-project.supabase.co
 SUPABASE_SECRET_KEY=your-secret-key
 VITE_SUPABASE_ANON_KEY=your-publishable-key
 OPENROUTER_API_KEY=your-key
+# OPENROUTER_CHAT_MODEL=nvidia/nemotron-3.5-lightning:free  # optional model override, see backend/README.md
 ```
 
 ## 3️⃣ Create Database Tables (1 min)
@@ -68,6 +69,7 @@ Wait for "Health checks passed" message (~2 min for first run)
 | PDF upload fails | Check file is valid PDF |
 | Frontend can't reach gateway | Restart: `docker-compose restart` |
 | Slow response | OpenRouter might be throttling |
+| Repeated `404 Provider returned error` in backend logs | Set `OPENROUTER_CHAT_MODEL` in `backend/.env` to a model allowed by your OpenRouter "Allowed providers" setting, then restart backend |
 
 ## 📚 Full Documentation
 

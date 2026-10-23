@@ -101,6 +101,7 @@ VITE_SUPABASE_ANON_KEY=your-publishable-key
 
 # OpenRouter (get from https://openrouter.ai)
 OPENROUTER_API_KEY=your-api-key
+# OPENROUTER_CHAT_MODEL=nvidia/nemotron-3.5-lightning:free  # optional, see backend/README.md
 
 # Frontend
 VITE_GATEWAY_URL=http://localhost:3001
@@ -240,6 +241,14 @@ curl http://localhost:3001/health
 - Ensure file is a valid PDF
 - Check file size (backend timeout after 5 minutes)
 - Review backend logs: `docker-compose logs backend`
+
+### Queries fail with repeated `404` / `Provider returned error` in backend logs
+
+The agents' LLM model is unreachable. This can happen if the configured OpenRouter model's upstream
+provider is degraded, or if your OpenRouter account's "Allowed providers" privacy setting
+(https://openrouter.ai/settings/privacy) excludes the provider serving that model. Set
+`OPENROUTER_CHAT_MODEL` in `backend/.env` to another model id permitted by your allowed providers
+(e.g. `deepseek/deepseek-chat`) and restart the backend. See `backend/README.md` for details.
 
 ## Deployment to Railway
 

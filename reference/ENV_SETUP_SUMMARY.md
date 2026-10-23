@@ -101,6 +101,7 @@ LOG_LEVEL=debug
 SUPABASE_URL=https://jenfdatautqzoxzigrdh.supabase.co
 SUPABASE_KEY=<service-role-key>  # SECRET - enforces RLS
 OPENROUTER_API_KEY=<api-key>      # SECRET - paid API service
+OPENROUTER_CHAT_MODEL=<model-id>  # OPTIONAL - defaults to nvidia/nemotron-3.5-lightning:free
 NODE_ENV=development
 PORT=8000
 DEBUG=True
@@ -161,6 +162,7 @@ Database (RLS policies)
 | `NODE_ENV` | All | ✅ Server | Tells app what mode to run |
 | `SUPABASE_KEY` | Gateway/Backend | ❌ Server | Service role (admin), SECRET |
 | `OPENROUTER_API_KEY` | Backend | ❌ Server | Paid API, SECRET |
+| `OPENROUTER_CHAT_MODEL` | Backend | ❌ Server | Optional, defaults to `nvidia/nemotron-3.5-lightning:free`. Override if the default's provider is unavailable or excluded by your OpenRouter "Allowed providers" setting |
 
 ## Next Steps
 

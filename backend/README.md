@@ -23,6 +23,7 @@ Update with your actual values:
 - `SUPABASE_SERVICE_ROLE_KEY`: Optional alternate server key name
 - `SUPABASE_KEY`: Legacy fallback name (still supported)
 - `OPENROUTER_API_KEY`: Your OpenRouter API key
+- `OPENROUTER_CHAT_MODEL` (optional): OpenRouter model id used by the agents. Defaults to `nvidia/nemotron-3.5-lightning:free`. If you see repeated `404 Not Found for account` / `Provider returned error` responses in the logs, the default model's upstream provider may be degraded, or your OpenRouter account's "Allowed providers" privacy setting (https://openrouter.ai/settings/privacy) may exclude the provider serving that model — set this variable to another model id (e.g. `deepseek/deepseek-chat`) that is permitted by your allowed providers.
 
 ## Development
 

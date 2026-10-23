@@ -56,6 +56,7 @@ cp frontend/.env.example frontend/.env
 SUPABASE_URL=https://your-project.supabase.co
 SUPABASE_KEY=your-anon-key
 OPENROUTER_API_KEY=your-openrouter-key
+# OPENROUTER_CHAT_MODEL=nvidia/nemotron-3.5-lightning:free  # optional model override, see backend/README.md
 VITE_GATEWAY_URL=http://localhost:3001
 NODE_ENV=development
 BACKEND_URL=http://backend:8000
@@ -156,6 +157,7 @@ For each service, add environment variables:
 SUPABASE_URL=https://your-project.supabase.co
 SUPABASE_KEY=your-anon-key
 OPENROUTER_API_KEY=your-openrouter-key
+# OPENROUTER_CHAT_MODEL=nvidia/nemotron-3.5-lightning:free  # optional, see backend/README.md
 ```
 
 **Gateway Service:**
@@ -257,6 +259,13 @@ docker-compose exec gateway curl http://backend:8000/health
 - PDF must be valid and under 10MB
 - Check backend logs: `docker-compose logs backend`
 - Embeddings may take 30+ seconds per document
+
+### Queries fail with repeated `404` / `Provider returned error` in backend logs
+
+The configured OpenRouter model is unreachable — its upstream provider may be degraded, or it may be
+excluded by your OpenRouter account's "Allowed providers" privacy setting
+(https://openrouter.ai/settings/privacy). Set `OPENROUTER_CHAT_MODEL` in `backend/.env` to another
+model id permitted by your allowed providers (e.g. `deepseek/deepseek-chat`) and restart the backend.
 
 ## Performance Tips
 
